@@ -17,7 +17,7 @@ const algoliasearch = require('algoliasearch')
 
 const client = algoliasearch(
   'WFABFE7Z9Q',
-  '0cb1dc9bc466d9a7225821033159e2ac'
+  process.env.ALGOLIA
 )
 const index = client.initIndex('raymondcamden')
 
