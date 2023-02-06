@@ -1,10 +1,9 @@
 ---
+layout: layouts/base.njk
 title: Search Page
 permalink:
   search: /search/
 ---
-
-<h2>Ray here</h2>
 
 <div class="container">
   <div class="prose prose-zinc dark:prose-invert mb-4">
@@ -12,4 +11,6 @@ permalink:
       You searched for: "{{ eleventy.serverless.query.query }}"
     </h2>
   </div>
+  {% set searchResults = eleventy.serverless.query.query | getResults %} {%
+  include 'components/note-list-search.njk' %}
 </div>
