@@ -1,0 +1,25 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: collections
+  size: 1
+  alias: tag
+  addAllPagesToCollections: true
+eleventyComputed:
+  title: Tagged “{{ tag }}”
+permalink: /tags/{{ tag | slugify }}/
+---
+
+{% block content %}
+
+<div class="container">
+  <div class="prose prose-zinc dark:prose-invert mb-4">
+    <h1 class="tagHeading flex gap-4 items-center">
+      {% tagDot tag %} {{ tag }}
+    </h1>
+  </div>
+
+  {% set notes = collections[tag] %} {% include 'components/note-list.njk' %}
+</div>
+
+{% endblock %}

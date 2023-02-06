@@ -1,0 +1,12 @@
+@import 'tailwindcss/base';
+
+@import 'global/vars.css';
+@import 'global/utopia.css';
+@import 'global/global.css';
+
+@import 'tailwindcss/components';
+
+@import-glob 'components/*.css';
+@import-glob 'utilities/*.css';
+
+@import 'tailwindcss/utilities';

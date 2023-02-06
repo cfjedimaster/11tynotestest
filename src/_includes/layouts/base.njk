@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="{{ site.meta.lang }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% if title %}{{ title }} | {{ site.meta.title }} {% else %}{{
+        site.meta.title
+      }}
+      {% endif %}
+    </title>
+    <meta
+      name="description"
+      content="{% if description %}{{ description }}{% else %}{{
+        site.meta.description
+      }}{% endif %}"
+    />
+
+    <link
+      rel="shortcut icon"
+      href="{{ '/static/img/favicon.ico' | url }}"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="{{ '/css/index.css' | url }}" media="all" />
+  </head>
+
+  <body>
+    <div class="cn-layoutWrapper">
+      {% include 'components/sidebar.njk' %}
+
+      <main id="main" class="cn-main">
+        <div class="max-w-4xl mx-auto">
+          <div class="flex items-center gap-6 mb-10">
+            <button class="cn-nav">
+              {% heroicon "outline", "menu", "Show menu", { width: 20 } %}
+            </button>
+            {% include 'components/search.njk' %}
+          </div>
+          {{ content | safe }}
+        </div>
+      </main>
+    </div>
+
+    <script>
+      const burger = document.querySelector('.cn-nav')
+      const mainEl = document.querySelector('.cn-main')
+      burger.addEventListener('click', () => {
+        mainEl.toggleAttribute('open')
+      })
+
+      function isFormField(element) {
+        if (!(element instanceof HTMLElement)) {
+          return false
+        }
+
+        const name = element.nodeName.toLowerCase()
+        const type = (element.getAttribute('type') || '').toLowerCase()
+        return (
+          name === 'select' ||
+          name === 'textarea' ||
+          (name === 'input' && type !== 'submit' && type !== 'reset') ||
+          element.isContentEditable
+        )
+      }
+
+      const inputEl = document.querySelector('.searchInput')
+      document.addEventListener('keydown', (event) => {
+        if (!(event instanceof KeyboardEvent)) {
+          return
+        }
+        if (event.target instanceof Node && isFormField(event.target)) {
+          return
+        }
+        if (event.isComposing || event.key === '/') {
+          event.preventDefault()
+          inputEl.focus()
+        }
+      })
+
+      // const darkToggleButtons = document.querySelectorAll('.dark-toggle')
+      // function changeDarkToggleBtnIcon() {
+      //   darkToggleButtons.forEach((btn) => {
+      //     if (
+      //       btn.querySelector('img').src.indexOf('/static/img/moon.svg') !== -1
+      //     ) {
+      //       btn.querySelector('img').src = "{{ '/static/img/sun.svg' | url }}"
+      //     } else {
+      //       btn.querySelector('img').src = "{{ '/static/img/moon.svg' | url }}"
+      //     }
+      //   })
+      // }
+      // if (
+      //   localStorage.prefsDark === 'true' ||
+      //   (window.matchMedia &&
+      //     window.matchMedia('(prefers-color-scheme: dark)').matches &&
+      //     localStorage.prefsDark !== 'false')
+      // ) {
+      //   document.documentElement.classList.add('dark')
+      //   changeDarkToggleBtnIcon()
+      // }
+      //
+    </script>
+  </body>
+</html>

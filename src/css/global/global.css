@@ -1,0 +1,28 @@
+:root {
+  color-scheme: light;
+  background-color: var(--bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    background-color: var(--bg);
+  }
+}
+
+:root.dark {
+  color-scheme: dark;
+  background-color: var(--bg);
+}
+
+.icon {
+  opacity: 0.6;
+}
+
+a {
+  transition: all 250ms ease-in-out;
+}
+
+a:hover {
+  color: var(--color-accent);
+}
