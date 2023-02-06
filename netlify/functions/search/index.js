@@ -16,7 +16,7 @@ console.log('wtf2');
   console.log('wtf3');
 
     let [page] = await elev.getOutput();
-
+  console.log('got the page');
     // If you want some of the data cascade available in `page.data`, use `eleventyConfig.dataFilterSelectors`.
     // Read more: https://www.11ty.dev/docs/config/#data-filter-selectors
 
